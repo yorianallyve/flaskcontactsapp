@@ -42,9 +42,8 @@ def add_contact():
 def get_contact(id):
     cur=mysql.connection.cursor()
     cur.execute('SELECT * from contacts where id =%s', (id))
-    data = cur.fetchall()
-    print (data[0])
-    return 'recibido'
+    data = cur.fetchall()  
+    return render_template('edit_contact.html', contact=data[0])
 
 @app.route('/delete/<string:id>')
 def delete_contact(id):
